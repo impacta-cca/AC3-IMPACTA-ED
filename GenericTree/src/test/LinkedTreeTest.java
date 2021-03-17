@@ -30,13 +30,13 @@ class LinkedTreeTest {
 		
 		System.out.println(T.toString());
 
-		System.out.println(T.toStringPostorder(T, T.root()));
+		//System.out.println(T.toStringPostorder(T, T.root()));
 
 		assertFalse(T.isEmpty());
 
 		assertEquals(4, T.height1(T), "Altura da Árvore T");
 
-		assertEquals(4, T.height2(T, T.root()), "Altura da Árvore T");
+		//assertEquals(4, T.height2(T, T.root()), "Altura da Árvore T");
 
 		assertEquals("[Eletronics R'Us, P&D, Vendas, Internacional, Canadá, América do Sul, "
 

@@ -100,12 +100,11 @@ public class LinkedTree<E> implements Tree<E> {
 
 		PositionList<Position<E>> positions = new NodePositionList<Position<E>>();
 
-		if (size != 0)
-			preorderPositions(root(), positions);
+		if (size != 0) preorderPositions(root(), positions);
 
 		return positions;
 
-	}
+		}
 
 	// Retorna um iterator dos elementos armazenados nos nodos
 
@@ -271,18 +270,18 @@ public class LinkedTree<E> implements Tree<E> {
 	
 	public int height1(LinkedTree<E> T) {
 		int h = 0;
+
+		for(Position<E> v : T.positions()) {
+			if(T.isExternal(v)) {  
+				h = Math.max(h, T.depth(T, v));
+			}
+			
+		}
+		
+		
 		//Percorrer a lista T
 		//Verificar se o Position V da lista T é um nodo externo
 		//se sim, o inteiro h recebe o maior entre o proprio h e o depth de v na lista T
-		
-		for (TreePosition<E> it = T. ; ) {
-
-			s += ", " + ;
-
-		}
-
-		
-		
 		
 		return h;
 	}
