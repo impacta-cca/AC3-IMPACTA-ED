@@ -5,6 +5,8 @@ import java.util.Iterator;
 public class LinkedTree<E> implements Tree<E> {
 
 	protected TreePosition<E> root; // Referência para a raíz
+	
+	
 
 	protected int size; // Número de Nodos
 
@@ -270,6 +272,7 @@ public class LinkedTree<E> implements Tree<E> {
 	
 	public int height1(LinkedTree<E> T) {
 		int h = 0;
+		
 
 		for(Position<E> v : T.positions()) {
 			if(T.isExternal(v)) {  
@@ -278,15 +281,61 @@ public class LinkedTree<E> implements Tree<E> {
 			
 		}
 		
-		
-		//Percorrer a lista T
-		//Verificar se o Position V da lista T é um nodo externo
-		//se sim, o inteiro h recebe o maior entre o proprio h e o depth de v na lista T
-		
 		return h;
 	}
 	
 	
+	public String toStringpostorder(LinkedTree<E> T, Position<E> v) {
+		String teste="";
+		for (Position<E> w : T.children(v)) {
+			teste +=toStringpostorder(T, w)+"\n";
+		}
+		
+		teste += v.element();
+		return teste;
+		
+	}
+	
+	public void postorder(LinkedTree<E> T, Position<E> v) {
+		boolean teste=true;
+		for (Position<E> w : T.children(v)) {
+			postorder(T, w);
+		}
+		
+		System.out.println(v.element()+" Visitado");
+		
+	}
+	
+	
+	public int diskSpace(LinkedTree<DiscNode> T, TreePosition<DiscNode> v) {
+
+		int s = v.element().getKbytes(); // inicia com o tamanho do próprio nodo
+
+		for (Position<DiscNode> w : v.getChildren()) {
+
+		// acrescenta o espaço ocupado pelos filhos de v calculado recursivamente
+
+		s += diskSpace(T, (TreePosition<DiscNode>)w);
+
+		}
+
+		if (T.isInternal(v)) {
+
+		// imprime o nome e o espaço ocupado em disco
+
+		System.out.println(v.getElement().getName() + ": " + s);
+
+		}
+
+		return s;
+
+		}
+	
+	
+	
+
+	
+
 
 
 

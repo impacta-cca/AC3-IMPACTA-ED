@@ -7,6 +7,8 @@ private E element; // Elemento armazenado neste nodo.
 private TreePosition<E> parent; // Nodo pai
 
 private PositionList<Position<E>> children; // Nodos filhos
+private int kbytes;
+private String name;
 
 // Construtor padrão
 
@@ -51,6 +53,7 @@ public TreePosition<E> getParent() { return parent; }
 // Define o pai desta posição
 
 public void setParent(TreePosition<E> v) { parent = v; }
+
 
 
 }

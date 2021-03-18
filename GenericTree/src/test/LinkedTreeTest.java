@@ -28,21 +28,25 @@ class LinkedTreeTest {
 		
 		System.out.println(T.parentheticRepresentation(T, T.root()));
 		
-		System.out.println(T.toString());
+		//System.out.println(T.toString());
 
-		//System.out.println(T.toStringPostorder(T, T.root()));
+		System.out.println(T.toStringpostorder(T, T.root()));
 
 		assertFalse(T.isEmpty());
+		System.out.println(T.height1(T));
 
 		assertEquals(4, T.height1(T), "Altura da Árvore T");
+		
+		
+		T.postorder(T, T.root());
 
 		//assertEquals(4, T.height2(T, T.root()), "Altura da Árvore T");
 
-		assertEquals("[Eletronics R'Us, P&D, Vendas, Internacional, Canadá, América do Sul, "
+		/*assertEquals("[Eletronics R'Us, P&D, Vendas, Internacional, Canadá, América do Sul, "
 
 				+ "Ultramar, África, Europa, Ásia, Austrália, Nacional, Compras, Manufatura, TV, CD, Tuner]",
 
-				T.toString(), "Pré-ordem da Árvore T ");
+				T.toString(), "Pré-ordem da Árvore T ");*/
 
 		raiz = T.root();
 
@@ -83,6 +87,7 @@ class LinkedTreeTest {
 				T.toString(), "Pré-ordem da Árvore T ");
 
 	}
+	
 
 	private TreeNode<String> criarFilho(TreeNode<String> p, String n) {
 
@@ -109,6 +114,8 @@ class LinkedTreeTest {
 		return aux;
 
 	}
+	
+	
 
 	public LinkedTree<String> criarArvoreT() {
 
@@ -167,5 +174,6 @@ class LinkedTreeTest {
 		return T;
 
 	}
+	
 
 }

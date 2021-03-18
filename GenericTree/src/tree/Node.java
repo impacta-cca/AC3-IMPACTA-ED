@@ -53,4 +53,6 @@ public class Node<E> implements Position<E> {
 	public void setElement(E newElement) {
 		element = newElement;
 	}
+
+	
 }
