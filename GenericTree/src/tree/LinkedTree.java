@@ -4,21 +4,21 @@ import java.util.Iterator;
 
 public class LinkedTree<E> implements Tree<E> {
 
-	protected TreePosition<E> root; // Referência para a raíz
+	protected TreePosition<E> root; // Referï¿½ncia para a raï¿½z
 
-	protected int size; // Número de Nodos
+	protected int size; // Nï¿½mero de Nodos
 
-	// Cria uma árvore vazia
+	// Cria uma ï¿½rvore vazia
 
 	public LinkedTree() {
 
-		root = null; // Inicia uma árvore vazia
+		root = null; // Inicia uma ï¿½rvore vazia
 
 		size = 0;
 
 	}
 
-	// Retorna um número de nodos da árvore
+	// Retorna um nï¿½mero de nodos da ï¿½rvore
 
 	public int size() {
 
@@ -26,19 +26,19 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Retorna se a árvore está vazia
+	// Retorna se a ï¿½rvore estï¿½ vazia
 
 	public boolean isEmpty() {
 		return (size == 0);
 	}
 
-	// Retorna se um nodo é interno
+	// Retorna se um nodo ï¿½ interno
 
 	public boolean isInternal(Position<E> v) throws InvalidPositionException {
 		return !isExternal(v);
 	}
 
-	// Retorna se um nodo é externo
+	// Retorna se um nodo ï¿½ externo
 
 	public boolean isExternal(Position<E> v) throws InvalidPositionException {
 
@@ -48,7 +48,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Retorna se um nodo é a raíz
+	// Retorna se um nodo ï¿½ a raï¿½z
 
 	public boolean isRoot(Position<E> v) throws InvalidPositionException {
 
@@ -58,7 +58,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Retorna a raíz da árvore
+	// Retorna a raï¿½z da ï¿½rvore
 
 	public TreePosition<E> root() throws EmptyTreeException {
 
@@ -84,7 +84,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Retorna uma coleção iterável dos filhos de um nodo
+	// Retorna uma coleï¿½ï¿½o iterï¿½vel dos filhos de um nodo
 
 	public Iterable<Position<E>> children(Position<E> v) throws InvalidPositionException {
 
@@ -94,17 +94,18 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Retorna uma coleção iterável dos nodos da árvore.
+	// Retorna uma coleï¿½ï¿½o iterï¿½vel dos nodos da ï¿½rvore.
 
 	public Iterable<Position<E>> positions() {
 
 		PositionList<Position<E>> positions = new NodePositionList<Position<E>>();
 
-		if (size != 0) preorderPositions(root(), positions);
+		if (size != 0)
+			preorderPositions(root(), positions);
 
 		return positions;
 
-		}
+	}
 
 	// Retorna um iterator dos elementos armazenados nos nodos
 
@@ -135,9 +136,9 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Métodos de atualização adicionais
+	// Mï¿½todos de atualizaï¿½ï¿½o adicionais
 
-	// Adiciona um nodo raíz para uma árvore vazia
+	// Adiciona um nodo raï¿½z para uma ï¿½rvore vazia
 
 	public TreePosition<E> addRoot(E e) throws NonEmptyTreeException {
 
@@ -168,10 +169,10 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Métodos auxiliares
+	// Mï¿½todos auxiliares
 
-	// Se v é um bom nodo da árvore, cast para TreePosition, caso contrário, lança
-	// exceção
+	// Se v ï¿½ um bom nodo da ï¿½rvore, cast para TreePosition, caso contrï¿½rio, lanï¿½a
+	// exceï¿½ï¿½o
 
 	protected TreePosition<E> checkPosition(Position<E> v) throws InvalidPositionException {
 
@@ -182,7 +183,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Cria um novo nodo da árvore
+	// Cria um novo nodo da ï¿½rvore
 
 	protected TreePosition<E> createNode(E element, TreePosition<E> parent, PositionList<Position<E>> children) {
 
@@ -190,9 +191,9 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 
-	// Cria uma lista armazenando os nodos das subárvore de um nodo
+	// Cria uma lista armazenando os nodos das subï¿½rvore de um nodo
 
-	// ordenado de acordo com a travessia das subárvores
+	// ordenado de acordo com a travessia das subï¿½rvores
 
 	protected void preorderPositions(Position<E> v, PositionList<Position<E>> pos) throws InvalidPositionException {
 
@@ -229,7 +230,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 	public String parentheticRepresentation(Tree<E> T, Position<E> v) {
 
-		String s = v.element().toString(); // ação principal de visita
+		String s = v.element().toString(); // aï¿½ï¿½o principal de visita
 		String tabs = "\t";
 		if (T.isInternal(v)) {
 
@@ -251,7 +252,7 @@ public class LinkedTree<E> implements Tree<E> {
 
 				}
 
-				s += ")"; // fecha parênteses
+				s += ")"; // fecha parï¿½nteses
 
 			}
 
@@ -261,47 +262,65 @@ public class LinkedTree<E> implements Tree<E> {
 
 	}
 	
+	
 	public int depth(LinkedTree<E> T, Position<E> v) {
-		if (T.isRoot(v)) { return 0;}
-
-		return 1+ depth(T, T.parent(v));
+		/**
+		 * Se v for raiz, profundidade = 0 Se nao, chama depth com o filho do nodo
+		 * recursivamente Soma +1 a profundiade maxima dos filhos
+		 */
+		if (T.isRoot(v)) {
+			return 0;
+		}
+		return 1 + depth(T, T.parent(v));
 	}
-	
-	
-	public int height1(LinkedTree<E> T) {
-		int h = 0;
 
-		for(Position<E> v : T.positions()) {
-			if(T.isExternal(v)) {  
+	public int height1(LinkedTree<E> T) {
+		/**
+		 * Percorrer a lista T Verificar se o Position v da lista T um nodo externo
+		 * se sim, o inteiro h recebe o maior entre o proprio h e o depth de v na lista T
+		 */
+		int h = 0;
+		for (Position<E> v : T.positions()) {
+			if (T.isExternal(v)) {
 				h = Math.max(h, T.depth(T, v));
 			}
-			
 		}
-		
-		
-		//Percorrer a lista T
-		//Verificar se o Position V da lista T é um nodo externo
-		//se sim, o inteiro h recebe o maior entre o proprio h e o depth de v na lista T
-		
 		return h;
 	}
-	
-	
+
+	public int height2(LinkedTree<E> T, Position<E> v) {
+		/**
+		 * Apenas se o nodo for interno Percorre ate altura maxima do filho e atribui
+		 * para h h retorna a altura maxima + 1
+		 */
+		if (!T.isExternal(v)) {
+			int h = 0;
+			for (Position<E> w : T.children(v)) {
+				h = Math.max(h, height2(T, w));
+			}
+			return h + 1;
+		}
+		return 0;
+	}
 
 
-
-// EXERCÍCIO PARA OS ALUNOS
+// EXERCï¿½CIO PARA OS ALUNOS
 
 // Implementar:
 
-// depth
+// depth 
+// ------------Ok!
 
 // height1
+// ------------Ok!
 
 // height2
+// ------------Ok!
 
 // parentheticRepresentation
+// ------------Ok!
 
 // toStringPostorder
+// ------------Ok!
 
 }

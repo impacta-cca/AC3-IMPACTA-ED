@@ -34,15 +34,15 @@ class LinkedTreeTest {
 
 		assertFalse(T.isEmpty());
 
-		assertEquals(4, T.height1(T), "Altura da Árvore T");
+		assertEquals(4, T.height1(T), "Altura da ï¿½rvore T");
 
-		//assertEquals(4, T.height2(T, T.root()), "Altura da Árvore T");
+		assertEquals(4, T.height2(T, T.root()), "Altura da ï¿½rvore T");
 
-		assertEquals("[Eletronics R'Us, P&D, Vendas, Internacional, Canadá, América do Sul, "
+		assertEquals("[Eletronics R'Us, P&D, Vendas, Internacional, Canadï¿½, Amï¿½rica do Sul, "
 
-				+ "Ultramar, África, Europa, Ásia, Austrália, Nacional, Compras, Manufatura, TV, CD, Tuner]",
+				+ "Ultramar, ï¿½frica, Europa, ï¿½sia, Austrï¿½lia, Nacional, Compras, Manufatura, TV, CD, Tuner]",
 
-				T.toString(), "Pré-ordem da Árvore T ");
+				T.toString(), "Prï¿½-ordem da ï¿½rvore T ");
 
 		raiz = T.root();
 
@@ -66,21 +66,21 @@ class LinkedTreeTest {
 
 		T.replace(p.element(), "Pesquisa e Desenvolvimento");
 
-		assertEquals("[Eletronics R'Us, Pesquisa e Desenvolvimento, Vendas, Internacional, Canadá, América do Sul, "
+		assertEquals("[Eletronics R'Us, Pesquisa e Desenvolvimento, Vendas, Internacional, Canadï¿½, Amï¿½rica do Sul, "
 
-				+ "Ultramar, África, Europa, Ásia, Austrália, Nacional, Compras, Manufatura, TV, CD, Tuner]",
+				+ "Ultramar, ï¿½frica, Europa, ï¿½sia, Austrï¿½lia, Nacional, Compras, Manufatura, TV, CD, Tuner]",
 
-				T.toString(), "Pré-ordem da Árvore T ");
+				T.toString(), "Prï¿½-ordem da ï¿½rvore T ");
 
 		assertTrue(T.isRoot(raiz));
 
 		T.swapElements(p.element(), s.element());
 
-		assertEquals("[Eletronics R'Us, Vendas, Pesquisa e Desenvolvimento, Internacional, Canadá, América do Sul, "
+		assertEquals("[Eletronics R'Us, Vendas, Pesquisa e Desenvolvimento, Internacional, Canadï¿½, Amï¿½rica do Sul, "
 
-				+ "Ultramar, África, Europa, Ásia, Austrália, Nacional, Compras, Manufatura, TV, CD, Tuner]",
+				+ "Ultramar, ï¿½frica, Europa, ï¿½sia, Austrï¿½lia, Nacional, Compras, Manufatura, TV, CD, Tuner]",
 
-				T.toString(), "Pré-ordem da Árvore T ");
+				T.toString(), "Prï¿½-ordem da ï¿½rvore T ");
 
 	}
 
@@ -90,7 +90,7 @@ class LinkedTreeTest {
 
 		TreeNode<String> aux;
 
-// Obtém os Filhos de p
+// Obtï¿½m os Filhos de p
 
 		filhos = p.getChildren();
 
@@ -140,21 +140,21 @@ class LinkedTreeTest {
 
 // Filhos de Internacional
 
-		criarFilho(i, "Canadá");
+		criarFilho(i, "Canadï¿½");
 
-		criarFilho(i, "América do Sul");
+		criarFilho(i, "Amï¿½rica do Sul");
 
 		u = criarFilho(i, "Ultramar");
 
 // Filhos de Ultramar
 
-		criarFilho(u, "África");
+		criarFilho(u, "ï¿½frica");
 
 		criarFilho(u, "Europa");
 
-		criarFilho(u, "Ásia");
+		criarFilho(u, "ï¿½sia");
 
-		criarFilho(u, "Austrália");
+		criarFilho(u, "Austrï¿½lia");
 
 // Filhos de Manufatura
 
