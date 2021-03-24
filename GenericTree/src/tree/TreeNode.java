@@ -3,13 +3,8 @@ package tree;
 public class TreeNode <E> implements TreePosition<E> {
 
 private E element; // Elemento armazenado neste nodo.
-
 private TreePosition<E> parent; // Nodo pai
-
 private PositionList<Position<E>> children; // Nodos filhos
-private int kbytes;
-private String name;
-
 // Construtor padrão
 
 public TreeNode() {}

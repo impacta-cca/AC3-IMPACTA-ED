@@ -27,3 +27,11 @@ public interface TreePosition<E> extends Position<E> {
 	public void setParent(TreePosition<E> v);
 
 	}
+
+
+
+
+
+
+
+

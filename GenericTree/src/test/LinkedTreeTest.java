@@ -24,6 +24,9 @@ class LinkedTreeTest {
 		PositionList<Position<String>> filhos;
 
 		LinkedTree<String> T = criarArvoreT();
+		LinkedTree<String> D = criarArvoreD();
+		D.diskSpace(D, D.root());
+		
 
 		
 		System.out.println(T.parentheticRepresentation(T, T.root()));
@@ -34,6 +37,8 @@ class LinkedTreeTest {
 
 		assertFalse(T.isEmpty());
 		System.out.println(T.height1(T));
+		
+		
 
 		assertEquals(4, T.height1(T), "Altura da �rvore T");
 		
@@ -180,5 +185,59 @@ class LinkedTreeTest {
 
 	}
 	
+	
+	public LinkedTree<String> criarArvoreD() {
+
+		LinkedTree<String> T = new LinkedTree<String>();
+
+		TreeNode<String> raiz, cs252, cs016, projetos , trabalhos, demos, temas, programas;
+
+		T.addRoot("5124 /usuario/rt/cursos/");
+
+		raiz = (TreeNode<String>) T.root();
+
+		raiz.setChildren(new NodePositionList<Position<String>>());
+
+// Filhos da raiz : /usuario/rt/cursos/
+
+		cs252 = criarFilho(raiz, "4874 cs252/");
+
+		cs016 = criarFilho(raiz, "249 cs016/");
+
+		// filhos do nodo: cs252
+		
+		projetos =criarFilho(cs252, "4870 projetos/");
+		criarFilho(cs252, "3 notas/");
+		
+		//filhos do nodo: cs016
+		
+		criarFilho(cs016, "8 notas/");
+		temas = criarFilho(cs016, "1 temas/");
+		programas = criarFilho(cs016, "1 programas");
+		
+		//filhos do nodo: projetos
+		trabalhos = criarFilho(projetos, "1 trabalhos/");
+		demos = criarFilho(projetos, "1 demos");
+		
+		//filhos do nodo: temas
+		criarFilho(temas, "3 hw1");
+		criarFilho(temas, "2 hw2");
+		criarFilho(temas, "4 hw3");
+		criarFilho(temas, "57 pr1");
+		criarFilho(temas, "97 pr2");
+		criarFilho(temas, "74 pr3");
+		
+		//filhos do nodo: trabalhos
+		criarFilho(trabalhos, "26 comprebaixo");
+		criarFilho(trabalhos, "55 vendealto");
+		
+		//filhos do nodo: demos
+		criarFilho(demos,"4786 mercado");
+		
+
+
+		return T;
+
+	}
 
 }

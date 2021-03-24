@@ -1,53 +1,44 @@
 package tree;
 
-public class DiscNode<E> {
+
+
+public class DiscNode<E> implements TreePosition<E> {
 	
-	private int kbytes;
-	private String name;
-	
-	private E[] element;
-	
+	private E element; // Elemento armazenado neste nodo.
 	private TreePosition<E> parent; // Nodo pai
-
 	private PositionList<Position<E>> children; // Nodos filhos
-
 	// Construtor padrão
+	private int KByte;
+	private String Name;
 
 	public DiscNode() {}
 
 	// Construtor principal
 
-	public DiscNode(String name,int kbytes, TreePosition<E> parent, PositionList<Position<E>> children) {
+	public DiscNode(E element, TreePosition<E> parent, PositionList<Position<E>> children) {
 
-	this.kbytes = kbytes;
-	this.name = name;
+	setElement(element);
 
 	setParent(parent);
 
 	setChildren(children);
 
 	}
-	
-	
-	
 
-	
-	
-	
-	
-	
-	public int getKbytes(){ return kbytes; }
-	
-	public String getName()  { return name; }
-	
-	public void setKbytes(E[] element){ kbytes = Integer.parseInt((String) element[0]); }
-	
-	public void setName(E[] element)  { name = (String) element[1]; }
-	
-	
+	// Retorna o elemento armazenado nesta posição.
 
-	
-	
+	public E element() { return element; }
+
+	// Define o elemento a ser armazenado nesta posição
+
+	public void setElement(E o) { element = o; }
+
+	// Retorna o elemento armazenado nesta posição
+
+	public E getElement() { return element; }
+
+	// Retorna os filhos desta posição
+
 	public PositionList<Position<E>> getChildren() { return children; }
 
 	// Define os filhos desta posição
@@ -63,13 +54,17 @@ public class DiscNode<E> {
 	public void setParent(TreePosition<E> v) { parent = v; }
 
 	
-	
+	public int getKbytes() {
+		String[] aux = element.toString().split(" ");
+		KByte = Integer.parseInt(aux[1]);
+		return KByte;
+	}
 
-
-	
-	
-	
-	
+	public String getName() {
+		String[] aux = element.toString().split(" ");
+		Name = aux[1];
+		return Name;
+	}
 	
 	
 
