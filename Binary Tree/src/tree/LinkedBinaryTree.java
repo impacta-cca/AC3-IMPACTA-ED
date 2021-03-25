@@ -1,6 +1,9 @@
 package tree;
 
+import java.util.Arrays;
 import java.util.Iterator;
+
+import javax.lang.model.element.Element;
 
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
@@ -396,9 +399,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return (vv.getRight() != null);
 
 	}
-	
-	
-	
+
 	public static <E> String toString(LinkedBinaryTree<E> T) {
 
 		String s = "";
@@ -419,5 +420,251 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
 	}
 
+	public String binaryPostOrder(LinkedBinaryTree<E> T, Position<E> v) {
+
+		LinkedBinaryTree<E> sub = new LinkedBinaryTree<E>();
+		String f = "";
+		sub.addRoot(T.root().element());
+		if (T.hasLeft(v)) {
+
+			f += binaryPostOrder(sub, sub.left(v));
+		}
+		if (T.hasRight(v)) {
+			f += binaryPostOrder(sub, sub.right(v));
+		}
+
+		f += T.checkPosition(v).element();
+		return f;
+
+	}
+
+	public String binaryPreOrder(LinkedBinaryTree<E> T, Position<E> v) {
+
+		LinkedBinaryTree<E> sub = new LinkedBinaryTree<E>();
+		String f = "";
+		f = T.checkPosition(v).element().toString();
+		sub.addRoot(T.root().element());
+		if (T.hasLeft(v)) {
+			f += binaryPreOrder(sub, sub.left(v));
+		}
+		if (T.hasRight(v)) {
+			f += binaryPreOrder(sub, sub.right(v));
+		}
+
+		return f;
+
+	}
+
+	public Double evaluateExpression(LinkedBinaryTree<E> T, Position<E> v) {
+		Double f = 0.0;
+		if (T.isInternal(v)) {
+			Double x = evaluateExpression(T, T.left(v));
+			Double y = evaluateExpression(T, T.right(v));
+			switch (T.checkPosition(v).element().toString()) {
+			case "+":
+				return f = x + y;
+
+			case "-":
+				return f = x - y;
+
+			case "/":
+				return f = x / y;
+
+			case "*":
+				return f = x * y;
+			}
+
+		}
+		return f = Double.parseDouble(T.checkPosition(v).element().toString());
+	}
+
+
+	public String inorder(LinkedBinaryTree<E> T, Position<E> v, String divisor) {
+		String f = "";
+		if (T.hasLeft(v) == true) {
+			f += inorder(T, T.left(v), divisor);
+		}
+
+		f += T.checkPosition(v).element().toString() + divisor;
+		if (T.hasRight(v) == true) {
+			f += inorder(T, T.right(v), divisor);
+		}
+
+		return f;
+
+	}
+
+	public LinkedBinaryTree<Integer> makerBTSearch() {
+		LinkedBinaryTree<Integer> novo = new LinkedBinaryTree<Integer>();
+		int totalnum = 9;
+		int[] num = { 31, 25, 42, 12, 36, 90, 62, 75 };
+		Position<Integer> raiz, esquerda, direita, d, f;
+		novo.addRoot(58);
+		raiz = novo.root();
+		esquerda = novo.root();
+		direita = novo.root();
+
+		// lado esquerdo
+		esquerda = novo.insertLeft(raiz, 31);
+		direita = novo.insertRight(esquerda, 42);
+		esquerda = novo.insertLeft(esquerda, 25);
+		novo.insertLeft(direita, 36);
+		novo.insertLeft(esquerda, 12);
+
+		// lado direito
+		direita = novo.insertRight(raiz, 90);
+		esquerda = novo.insertLeft(direita, 62);
+		novo.insertRight(esquerda, 75);
+
+		return novo;
+
+	}
+
+	public Position<E> insertRight(Position<E> v, E e) throws InvalidPositionException {
+
+		BTPosition<E> vv = checkPosition(v);
+
+		Position<E> rightPos = (Position<E>) vv.getRight();
+
+		if (rightPos != null)
+			throw new InvalidPositionException("Node already has a left child");
+
+		BTPosition<E> ww = createNode(e, vv, null, null);
+
+		vv.setRight(ww);
+
+		size++;
+
+		return ww;
+
+	}
+
+	public String parentheticRepresentation(Tree<E> T, Position<E> v) {
+
+		String s = v.element().toString(); // ação principal de visita
+
+		if (T.isInternal(v)) {
+
+			Boolean firstTime = true;
+
+			for (Position<E> w : T.children(v)) {
+
+				if (firstTime) {
+					// primeiro filho
+
+					s += "(" + parentheticRepresentation(T, w);
+
+					firstTime = false;
+
+				} else {
+					// filhos seguintes
+
+					s += "," + parentheticRepresentation(T, w);
+
+				}
+
+				s += ")"; // fecha parênteses
+
+			}
+
+		}
+
+		return s;
+
+	}
+
+	public String eulerTour(LinkedBinaryTree<E> T, Position<E> v) {
+		String f = "";
+		f += T.checkPosition(v).element();
+
+		if (T.hasLeft(v)) {
+			f += eulerTour(T, T.left(v));
+		}
+		f += T.checkPosition(v).element();
+		if (T.hasRight(v)) {
+			f += eulerTour(T, T.right(v));
+		}
+		f += T.checkPosition(v).element();
+		return f;
+
+	}
+
+	public void printExpression(LinkedBinaryTree<E> T, Position<E> v) {
+		if (T.isInternal(v)) {
+			System.out.print("(");
+		}
+		if (T.hasLeft(v)) {
+			printExpression(T, T.left(v));
+		}
+		if (T.isInternal(v)) {
+			System.out.print(T.checkPosition(v).element());
+		} else {
+			System.out.print(T.checkPosition(v).element());
+		}
+		if (T.hasRight(v)) {
+			printExpression(T, T.right(v));
+		}
+		if (T.isInternal(v)) {
+			System.out.print(")");
+		}
+	}
+
+	public int contesquerda(LinkedBinaryTree<E> T, Position<E> v) {
+
+		int f = 0;
+
+		f = inorder(T, T.left(v)).length();
+
+		return f;
+
+	}
+
+	public int contdireita(LinkedBinaryTree<E> T, Position<E> v) {
+
+		int f = 0;
+
+		f = inorder(T, T.right(v)).length();
+
+		return f;
+
+	}
+	
+	public String inorder(LinkedBinaryTree<E> T, Position<E> v) {
+		String f = "";
+		if (T.hasLeft(v) == true) {
+			f += inorder(T, T.left(v));
+		}
+		f += T.checkPosition(v).element().toString();
+		if (T.hasRight(v) == true) {
+			f += inorder(T, T.right(v));
+		}
+
+		return f;
+
+	}
+
+	
+	
+	public void desenhaArvore(LinkedBinaryTree<E> T, Position<E> v, int qtdenpercorrido, int profundidade ) {
+		
+		
+		char pulo[] = new char[profundidade];
+		Arrays.fill(pulo, '\n');
+		String pulostring = new String(pulo);
+		
+		char tab[] = new char[T.contesquerda(T,T.left(T.root()))-qtdenpercorrido];
+		Arrays.fill(tab, '\t');
+		String tabtring = new String(tab);
+		
+		System.out.print(pulostring+tabtring+T.checkPosition(v).element().toString());
+		if(T.hasLeft(v)) {
+			
+			desenhaArvore(T, T.left(v), qtdenpercorrido+1, profundidade+1);
+		}
+		if(T.hasRight(v)) {
+			desenhaArvore(T, T.right(v), qtdenpercorrido+1, profundidade+1);
+		}
+		
+	}
 
 }

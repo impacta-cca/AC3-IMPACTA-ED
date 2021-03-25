@@ -13,9 +13,27 @@ class BinaryTreeTest {
 		LinkedBinaryTree<String> T = BuildExpression("((((3+1)*3)/((9-5)+2))-((3*(7-4))+6))");
 		
 		
-		System.out.print(T.toString(T));
-	}
+		//LinkedBinaryTree<Integer> D = new LinkedBinaryTree<Integer>();
+		//D = D.makerBTSearch();
+		//System.out.println(D.inorder(D, D.root(),", "));
+		//System.out.println(T.eulerTour(T, T.root()));
+		//T.printExpression(T, T.root());
+		///System.out.println(T.contesquerda(T, T.root()));
+		//System.out.println(T.contdireita(T, T.root()));
+		T.desenhaArvore(T, T.root(), 0, 0);
+
+		
+		//System.out.println(D.parentheticRepresentation(D, D.root()));
+		/*System.out.println(T.toString(T));
+		
+		System.out.println(T.binaryPreOrder(T, T.root()));
+		System.out.println(D.evaluateExpression(T,T.root()));
+		
+	*/
+		//System.out.println(T.inorder(T, T.root()));
+		
 	
+	}
 	
 	
 	
@@ -28,7 +46,7 @@ class BinaryTreeTest {
 				T.addRoot(Character.toString(E.charAt(i)));
 				S.push(T);
 			}
-			if(E.charAt(i)=='(') { 
+			else if(E.charAt(i)=='(') { 
 				
 			}
 			else if(E.charAt(i)==')') {
@@ -47,5 +65,11 @@ class BinaryTreeTest {
 		}
 		return S.pop();
 	}
+	
+	
+	
+	
+	
+	 
 
 }
