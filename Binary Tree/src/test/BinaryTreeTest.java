@@ -6,11 +6,14 @@ import tree.*;
 
 import org.junit.jupiter.api.Test;
 
-class BinaryTreeTest {
 
+class BinaryTreeTest {
+	public static void main(String[] args){
+	}
 	@Test
 	void test() {
 		LinkedBinaryTree<String> T = BuildExpression("((((3+1)*3)/((9-5)+2))-((3*(7-4))+6))");
+		System.out.println(T);
 		
 		
 		//LinkedBinaryTree<Integer> D = new LinkedBinaryTree<Integer>();
@@ -31,8 +34,6 @@ class BinaryTreeTest {
 		
 	*/
 		//System.out.println(T.inorder(T, T.root()));
-		
-	
 	}
 	
 	
@@ -64,7 +65,7 @@ class BinaryTreeTest {
 			
 		}
 		return S.pop();
-	}
+	
 	
 	
 	
@@ -72,4 +73,5 @@ class BinaryTreeTest {
 	
 	 
 
+}
 }
