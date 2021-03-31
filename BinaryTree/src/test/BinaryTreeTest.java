@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import interfaces.Position;
 import pilha.*;
-import treeB.LinkedBinaryTree;
+import treeB_ex4_ex5.LinkedBinaryTree;
 
 
 
@@ -56,7 +56,8 @@ class BinaryTreeTest {
 	@Test
 	void makeBTSSearchTest() {
 		LinkedBinaryTree<Integer> BTS = makerBTSearch();
-		assertEquals("12, 25, 31, 36, 42, 58, 62, 75, 90, ",BTS.inorder(BTS,BTS.root(), ", "));
+		
+		assertEquals("12, 25, 31, 36, 42, 58, 62, 75, 90",BTS.inorder(BTS,BTS.root(), ", ").substring(0,BTS.inorder(BTS,BTS.root(), ", ").length()-2));
 	}
 	// g) Método que desenhe a árvore binária de expressão conforme slide 47.
 	
@@ -88,15 +89,11 @@ class BinaryTreeTest {
 		assertEquals(7,T.contdireita(T, T.root()));
 	}
 	
-	//3 cria arvore é desenhá-la
 	@Test
-	void tentaImprimirArvre() {
-		LinkedBinaryTree<String> expressao = BuildExpression("(((5+2)*(2-1))*((2+9)+(7-2)-1))*8)");
+	void desenharArvore() {
+		T.desenhaArvore(T, T.root(), 0, 0);
 		
 	}
-	
-	
-	
 	
 	public LinkedBinaryTree<String> BuildExpression(String E){
 		ArrayStack<LinkedBinaryTree<String>> S = new ArrayStack<LinkedBinaryTree<String>>();

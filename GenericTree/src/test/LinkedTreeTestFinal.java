@@ -19,10 +19,10 @@ import org.junit.jupiter.api.Test;
 import interfaces.Position;
 import interfaces.PositionList;
 import interfaces.TreePosition;
-import tree.DiscNode;
-import tree.LinkedTree;
-import tree.NodePositionList;
-import tree.TreeNode;
+import tree_ex2_e_ex3.DiscNode;
+import tree_ex2_e_ex3.LinkedTree;
+import tree_ex2_e_ex3.NodePositionList;
+import tree_ex2_e_ex3.TreeNode;
 
 
 
@@ -45,7 +45,9 @@ class LinkedTreeTestFinal {
 		System.out.println(T.parentheticRepresentation(T, T.root()));
 
 		System.out.println(T.toStringpostorder(T, T.root()));
-
+		LinkedTree<DiscNode<String>> D = criarArvoreD();
+		
+		System.out.println(D.root().element().getName());
 		assertFalse(T.isEmpty());
 
 		assertEquals(4, T.height1(T), "Altura da Árvore T");
@@ -190,10 +192,10 @@ class LinkedTreeTestFinal {
 
 		DiscNode<String> raiz, cs252, cs016, projetos, trabalhos, demos, temas;
 
-		DiscNode<String> aux = new DiscNode<String>("5124 /usuario/rt/cursos/", null, null);
-		T.addRoot(new DiscNode<String>("5124 /usuario/rt/cursos/", null, null));
+		
+		T.addRoot(new DiscNode<String>("5124 /usuario/rt/cursos/",null,null));
 
-		raiz = (DiscNode) T.root();
+		raiz = (DiscNode) T.root().getElement();
 		raiz.setChildren(new NodePositionList<Position<String>>());
 
 		// Filhos da raiz : /usuario/rt/cursos/
@@ -239,7 +241,9 @@ class LinkedTreeTestFinal {
 		PositionList<Position<String>> filhos;
 
 		DiscNode<String> aux;
-
+		
+		String nome = n.split(n)[0];
+		int by = Integer.parseInt(n.split(n)[1]);
 		// Obt�m os Filhos de p
 
 		filhos = p.getChildren();
@@ -249,6 +253,8 @@ class LinkedTreeTestFinal {
 		aux = new DiscNode<String>();
 
 		aux.setElement(n);
+		aux.setKbyte(by);
+		aux.setname(nome);
 
 		aux.setParent(p);
 
