@@ -56,6 +56,12 @@ class BinaryTreeTest {
 				BTS.inorder(BTS, BTS.root(), ", ").substring(0, BTS.inorder(BTS, BTS.root(), ", ").length() - 2));
 	}
 	// g) Método que desenhe a árvore binária de expressão conforme slide 47.
+	
+	@Test
+	void desenharArvore() {
+		T.desenhaArvore(T, T.left(T.root()), 0, 0);
+
+	}
 
 	// h) eulerTour conforme slide 51.
 	@Test
@@ -83,11 +89,7 @@ class BinaryTreeTest {
 		assertEquals(7, T.contdireita(T, T.root()));
 	}
 
-	@Test
-	void desenharArvore() {
-		T.desenhaArvore(T, T.left(T.root()), 0, 0);
-
-	}
+	
 
 	public LinkedBinaryTree<String> BuildExpression(String E) {
 		ArrayStack<LinkedBinaryTree<String>> S = new ArrayStack<LinkedBinaryTree<String>>();
