@@ -45,9 +45,7 @@ class LinkedTreeTestFinal {
 		System.out.println(T.parentheticRepresentation(T, T.root()));
 
 		System.out.println(T.toStringpostorder(T, T.root()));
-		LinkedTree<DiscNode<String>> D = criarArvoreD();
 		
-		System.out.println(D.root().element().getName());
 		assertFalse(T.isEmpty());
 
 		assertEquals(4, T.height1(T), "Altura da Árvore T");
