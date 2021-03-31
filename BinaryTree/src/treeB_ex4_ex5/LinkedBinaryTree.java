@@ -486,7 +486,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return f = Double.parseDouble(T.checkPosition(v).element().toString());
 	}
 
-
 	public String inorder(LinkedBinaryTree<E> T, Position<E> v, String divisor) {
 		String f = "";
 		if (T.hasLeft(v) == true) {
@@ -501,7 +500,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return f;
 
 	}
-
 
 	public Position<E> insertRight(Position<E> v, E e) throws InvalidPositionException {
 
@@ -573,25 +571,25 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 	}
 
 	public String printExpression(LinkedBinaryTree<E> T, Position<E> v) {
-		String f="";
+		String f = "";
 		if (T.isInternal(v)) {
-			f+="(";
+			f += "(";
 		}
 		if (T.hasLeft(v)) {
-			f+=printExpression(T, T.left(v));
+			f += printExpression(T, T.left(v));
 		}
 		if (T.isInternal(v)) {
-			f+=(T.checkPosition(v).element());
+			f += (T.checkPosition(v).element());
 		} else {
-			f+=(T.checkPosition(v).element());
+			f += (T.checkPosition(v).element());
 		}
 		if (T.hasRight(v)) {
-			f+=printExpression(T, T.right(v));
+			f += printExpression(T, T.right(v));
 		}
 		if (T.isInternal(v)) {
-			f+=")";
+			f += ")";
 		}
-		
+
 		return f;
 	}
 
@@ -614,7 +612,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return f;
 
 	}
-	
+
 	public String inorder(LinkedBinaryTree<E> T, Position<E> v) {
 		String f = "";
 		if (T.hasLeft(v) == true) {
@@ -628,7 +626,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return f;
 
 	}
-	
+
 	public int depth(LinkedBinaryTree<E> T, Position<E> v) {
 		/**
 		 * Se v for raiz, profundidade = 0 Se nao, chama depth com o filho do nodo
@@ -640,29 +638,33 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return 1 + depth(T, T.parent(v));
 	}
 
-	
-	
-	public void desenhaArvore(LinkedBinaryTree<E> T, Position<E> v, int qtdenpercorrido, int profundidade ) {
-		
+	public void desenhaArvore(LinkedBinaryTree<E> T, Position<E> v, int qtdenpercorrido, int profundidade) {
+
 		PositionList<Position<E>> posicoes = new NodePositionList<Position<E>>();
 		posicoes = (PositionList<Position<E>>) T.positionsInorder();
-		System.out.println(posicoes.size());
-	
-		String[][] desenho = new String[posicoes.size()][T.height1(T)];
-		
-		for(String linha[]: desenho) {
-		Arrays.fill(linha, " ");
+
+		String[][] desenho = new String[T.height1(T) + 1][posicoes.size()];
+
+		for (String linha[] : desenho) {
+			Arrays.fill(linha, "=");
 		}
-		
-		for(String linha[]: desenho) {
-			int media = linha.length / 2;
-			
+
+		int aux = 0;
+		for (Position<E> posicao : posicoes) {
+
+			desenho[T.depth(T, posicao)][aux] = posicao.element().toString();
+
+			aux++;
+		}
+
+		for (int i = profundidade; i < desenho.length; i++) {
+			for (int j = qtdenpercorrido; j < desenho[0].length; j++) {
+				System.out.print(desenho[i][j]);
 			}
-			
-		
+			System.out.println();
+		}
 	}
-	
-	
+
 	public int height1(LinkedBinaryTree<E> T) {
 		/**
 		 * Percorrer a lista T Verificar se o Position v da lista T um nodo externo se
@@ -677,7 +679,4 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 		return h;
 	}
 
-	
 }
-	
-
